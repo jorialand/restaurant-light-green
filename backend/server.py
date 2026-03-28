@@ -14,9 +14,18 @@ from datetime import datetime, timezone
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
+# MongoDB connection with connection pooling and timeouts for Atlas
 mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
+client = AsyncIOMotorClient(
+    mongo_url,
+    serverSelectionTimeoutMS=5000,  # 5 second timeout for server selection
+    connectTimeoutMS=10000,  # 10 second timeout for initial connection
+    socketTimeoutMS=10000,  # 10 second timeout for socket operations
+    maxPoolSize=10,  # Connection pool size
+    minPoolSize=1,
+    retryWrites=True,  # Enable retryable writes for Atlas
+    w='majority'  # Write concern for data durability
+)
 db = client[os.environ['DB_NAME']]
 
 # Create the main app without a prefix
@@ -42,29 +51,53 @@ class StatusCheckCreate(BaseModel):
 async def root():
     return {"message": "Hello World"}
 
+# Health check endpoint for Kubernetes liveness probe
+@api_router.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "Light Green Menu API"}
+
+# Readiness check endpoint for Kubernetes readiness probe
+@api_router.get("/ready")
+async def readiness_check():
+    try:
+        # Test MongoDB connection
+        await db.command("ping")
+        return {"status": "ready", "database": "connected"}
+    except Exception as e:
+        logger.error(f"Database connection failed: {str(e)}")
+        return {"status": "not ready", "database": "disconnected", "error": str(e)}
+
 @api_router.post("/status", response_model=StatusCheck)
 async def create_status_check(input: StatusCheckCreate):
-    status_dict = input.model_dump()
-    status_obj = StatusCheck(**status_dict)
-    
-    # Convert to dict and serialize datetime to ISO string for MongoDB
-    doc = status_obj.model_dump()
-    doc['timestamp'] = doc['timestamp'].isoformat()
-    
-    _ = await db.status_checks.insert_one(doc)
-    return status_obj
+    try:
+        status_dict = input.model_dump()
+        status_obj = StatusCheck(**status_dict)
+        
+        # Convert to dict and serialize datetime to ISO string for MongoDB
+        doc = status_obj.model_dump()
+        doc['timestamp'] = doc['timestamp'].isoformat()
+        
+        _ = await db.status_checks.insert_one(doc)
+        return status_obj
+    except Exception as e:
+        logger.error(f"Error creating status check: {str(e)}")
+        raise
 
 @api_router.get("/status", response_model=List[StatusCheck])
 async def get_status_checks():
-    # Exclude MongoDB's _id field from the query results
-    status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(1000)
-    
-    # Convert ISO string timestamps back to datetime objects
-    for check in status_checks:
-        if isinstance(check['timestamp'], str):
-            check['timestamp'] = datetime.fromisoformat(check['timestamp'])
-    
-    return status_checks
+    try:
+        # Exclude MongoDB's _id field from the query results
+        status_checks = await db.status_checks.find({}, {"_id": 0}).to_list(100)
+        
+        # Convert ISO string timestamps back to datetime objects
+        for check in status_checks:
+            if isinstance(check['timestamp'], str):
+                check['timestamp'] = datetime.fromisoformat(check['timestamp'])
+        
+        return status_checks
+    except Exception as e:
+        logger.error(f"Error fetching status checks: {str(e)}")
+        raise
 
 # Include the router in the main app
 app.include_router(api_router)
@@ -84,6 +117,18 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+@app.on_event("startup")
+async def startup_db_client():
+    try:
+        # Verify MongoDB connection on startup
+        await db.command("ping")
+        logger.info(f"Successfully connected to MongoDB: {os.environ.get('DB_NAME', 'unknown')}")
+    except Exception as e:
+        logger.error(f"Failed to connect to MongoDB on startup: {str(e)}")
+        # Don't raise the exception - let the app start and fail on readiness probe instead
+        # This prevents crash loops during deployment
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
+    logger.info("MongoDB connection closed")
