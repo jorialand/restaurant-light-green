@@ -1,0 +1,9 @@
+# Ignore everything in this folder by default
+*
+
+# Except the assets actually used by index.html
+!.gitignore
+!logo.png
+!placeholder.png
+!show-1.png
+!show-2.jpeg

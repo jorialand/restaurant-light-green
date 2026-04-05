@@ -41,7 +41,7 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 76px;
+      height: 196px; /* Increased to fit double larger logo */
       background: linear-gradient(135deg, #0a120a 0%, var(--green-dark) 100%);
       border-bottom: 2px solid var(--gold);
       display: flex;
@@ -50,21 +50,36 @@
       z-index: 1000;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
     }
-
-    .header-title {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--gold-light);
-      text-align: center;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    
+    .header-content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      max-width: 560px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 16px;
     }
 
-    .header-subtitle {
-      font-size: 0.85rem;
-      color: var(--gold);
-      letter-spacing: 1px;
-      margin-top: 2px;
+    .header-content img {
+      max-height: 180px; /* Double size */
+      mix-blend-mode: lighten;
+    }
+
+    .lang-btn {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
     }
 
     /* ============================================
@@ -72,7 +87,7 @@
        ============================================ */
     nav {
       position: fixed;
-      top: 76px;
+      top: 196px; /* Matches header height */
       left: 0;
       right: 0;
       height: 58px;
@@ -102,6 +117,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
+      text-transform: uppercase;
     }
 
     .tab-btn:hover {
@@ -109,7 +125,6 @@
       color: var(--gold-light);
     }
 
-    /* Active tab indicator - 3px gold underline */
     .tab-btn.active {
       color: var(--gold-light);
     }
@@ -129,9 +144,9 @@
        MAIN CONTENT - Scrollable area
        ============================================ */
     main {
-      /* Padding to account for fixed header + tab bar + extra spacing */
-      padding-top: calc(76px + 58px + 14px);
-      padding-bottom: 40px;
+      /* Padding accounts for header(196px) + tab bar(58px) + extra spacing(14px) */
+      padding-top: calc(196px + 58px + 14px);
+      padding-bottom: 80px;
       min-height: 100vh;
     }
 
@@ -146,7 +161,6 @@
       animation: fadeUp 0.28s ease;
     }
 
-    /* Fade-in animation when switching tabs */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -159,34 +173,79 @@
     }
 
     /* ============================================
-       SECTION LABELS - For drink categories
-       ============================================ */
-    .section-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      color: var(--gold);
-      opacity: 0.6;
-      margin: 28px 0 16px;
+       DISCLAIMER (Global)
+       ============================================ */    
+    .disclaimer {
       text-align: center;
-      font-weight: 600;
+      color: var(--gold-light);
+      font-style: italic;
+      margin: 0 16px 24px 108px; /* Left margin avoids music-fab */
+      font-size: 0.85rem;
+      border: 1px solid var(--gold);
+      padding: 10px;
+      border-radius: 8px;
+      background: rgba(20, 31, 20, 0.4);
+    }
+
+    /* Desktop alignment correction for disclaimer */
+    @media (min-width: 1000px) {
+      .disclaimer {
+        margin: 0 auto 24px auto;
+        max-width: 560px;
+      }
     }
 
     /* ============================================
-       MENU CARDS - One image per dish
+       SECTION HEADERS
+       ============================================ */
+    .section-header {
+      font-family: Georgia, serif;
+      text-transform: uppercase;
+      color: var(--cream);
+      letter-spacing: 6px;
+      font-size: 1.5rem;
+      text-align: center;
+      margin: 32px 0 20px;
+    }
+    .section-header .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .section-header .ornament::before,
+    .section-header .ornament::after {
+      content: "";
+      flex: 1;
+      max-width: 80px;
+      border-bottom: 1px solid var(--gold);
+      opacity: 0.5;
+    }
+    .section-header .ornament::before {
+      margin-right: 16px;
+    }
+    .section-header .ornament::after {
+      margin-left: 16px;
+    }
+    .section-header .ornament-icon {
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    /* ============================================
+       MENU CARDS - Full Image Unit
        ============================================ */
     .card {
       max-width: 480px;
       margin: 0 auto 20px;
-      background: rgba(43, 82, 38, 0.2);
       border-radius: 12px;
       overflow: hidden;
       border: 2px solid var(--gold);
       box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      background: rgba(20, 31, 20, 0.6);
     }
 
-    /* Subtle lift on hover for desktop users */
     .card:hover {
       transform: translateY(-4px);
       box-shadow: 0 8px 24px rgba(201, 168, 76, 0.5);
@@ -196,7 +255,93 @@
       display: block;
       width: 100%;
       height: auto;
-      /* Lazy loading for performance */
+      object-fit: cover;
+    }
+
+    /* ============================================
+       FAB (Floating Action Buttons) on Left
+       ============================================ */
+    .fab-container {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      z-index: 999;
+    }
+
+    .fab {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--green-mid);
+      border: 2px solid var(--gold);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    .fab:hover {
+      transform: scale(1.1);
+      background-color: var(--green-dark);
+    }
+    
+    .fab svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    /* ============================================
+       LIVE MUSIC FAB (Top Left)
+       ============================================ */
+    .music-fab {
+      position: fixed;
+      top: 270px; /* Sits below the header + nav */
+      left: 24px;
+      width: 68px; /* Larger than other FABs */
+      height: 68px;
+      border-radius: 50%;
+      background-color: var(--gold);
+      color: var(--green-dark);
+      border: 3px solid var(--cream);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      z-index: 998;
+      font-weight: 800;
+      font-size: 0.70rem;
+      text-align: center;
+      line-height: 1.1;
+      transition: transform 0.2s ease;
+    }
+
+    .music-fab:hover {
+      transform: scale(1.1);
+    }
+
+    .music-fab span {
+      font-size: 1.4rem;
+      margin-bottom: 2px;
+    }
+
+    /* Hide large UI overlays on very small screens to avoid clutter */
+    @media (max-width: 360px) {
+      .music-fab {
+        width: 50px;
+        height: 50px;
+        font-size: 0.6rem;
+      }
+      .music-fab span { font-size: 1rem; }
     }
 
     /* ============================================
@@ -204,7 +349,7 @@
        ============================================ */
     .back-to-top {
       position: fixed;
-      bottom: 24px;
+      bottom: 24px; 
       right: 24px;
       width: 46px;
       height: 46px;
@@ -245,17 +390,14 @@
     }
 
     /* ============================================
-       RESPONSIVE DESIGN
+       RESPONSIVE DESIGN (Desktop centered constraint)
        ============================================ */
-    
-    /* Tablet - 640px and up */
     @media (min-width: 640px) {
       .tab-panel {
         padding: 0 24px;
       }
     }
 
-    /* Desktop - 1000px and up - center the column */
     @media (min-width: 1000px) {
       main {
         max-width: 560px;
@@ -270,236 +412,177 @@
        FIXED HEADER
        ============================================ -->
   <header>
-    <div>
-      <div class="header-title">LIGHT GREEN</div>
-      <div class="header-subtitle">Bar & Grill</div>
+    <div class="header-content">
+      <img src="res/logo.png" alt="Light Green Bar & Grill">
+      <!-- LANGUAGE TOGGLE: wire up in next sprint. -->
+      <button aria-label="Toggle language" class="lang-btn">EN | ES</button>
     </div>
   </header>
 
   <!-- ============================================
        TAB BAR NAVIGATION
-       Uses event delegation on the <nav> element
        ============================================ -->
   <nav role="tablist" id="tabBar">
-    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-carnes" data-target="panel-carnes">
-      🥩 Carnes
+    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-grill" data-target="panel-grill">
+      GRILL MENU
     </button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-bebidas" data-target="panel-bebidas">
-      🍺 Bebidas
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-tapas" data-target="panel-tapas">
+      MENU
     </button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-platos" data-target="panel-platos">
-      🍽️ Platos
+    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-drinks" data-target="panel-drinks">
+      DRINKS
     </button>
   </nav>
+
+  <!-- ============================================
+       LIVE MUSIC BALLOON FLAG (Top Left)
+       ============================================ -->
+  <div class="music-fab" id="musicFab" role="button" aria-label="Live Music Shows">
+    <span>🎵</span>
+    Live<br>Music
+  </div>
 
   <!-- ============================================
        MAIN CONTENT - Scrollable panels
        ============================================ -->
   <main>
+    
+    <!-- GLOBAL DISCLAIMER -->
+    <div class="disclaimer">Grill menu is available starting from 6PM. Rest of the menu is available all day round.</div>
 
-    <!-- 🥩 CARNES PANEL - Grilled meats and fish, ordered by price descending -->
-    <section id="panel-carnes" class="tab-panel active" role="tabpanel">
-      
-      <!-- Wagyu Japonés a la Parrilla - 35€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/ed1lgewa_IMG-20260324-WA0043.jpg" 
-          alt="Wagyu Japonés a la Parrilla - Japanese Wagyu Grilled Beef - 35€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Chuletón cortada con hueso - 32.50€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/mpwm6juy_IMG-20260324-WA0045.jpg" 
-          alt="Chuletón cortada con hueso - Sliced T-Bone Steak with Bone - 32.50€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Costata cortada con hueso - 29.50€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/56e4a96u_IMG-20260324-WA0034.jpg" 
-          alt="Costata cortada con hueso - Marbled Beef Tagliata with Bone - 29.50€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Solomillo a la Parrilla - 22€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/2w47tjwm_IMG-20260324-WA0035.jpg" 
-          alt="Solomillo a la Parrilla - Grilled Sirloin Steak - 22€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Pulpo a la Parrilla - 20€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/z8isy20b_IMG-20260324-WA0038.jpg" 
-          alt="Pulpo a la Parrilla - Grilled Octopus - 20€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Cordero a la Parrilla - 18€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/ftdpchnx_IMG-20260324-WA0033.jpg" 
-          alt="Cordero a la Parrilla - Grilled Lamb - 18€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Porchetta de Cerdo a la Parrilla - 18€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/626csis3_IMG-20260324-WA0041.jpg" 
-          alt="Porchetta de Cerdo a la Parrilla - Grilled Porchetta - 18€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- Cortada de ternera - 18€ -->
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/o7kjyovp_IMG-20260324-WA0039.jpg" 
-          alt="Cortada de ternera - Sliced beef steak - 18€"
-          loading="lazy"
-        >
-      </div>
-
+    <!-- TAB: GRILL MENU -->
+    <section id="panel-grill" class="tab-panel active" role="tabpanel">
+      <div class="card"><img src="res/placeholder.png" alt="Japanese Wagyu - 35€" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="T-Bone with Bone - 32.50€" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Ribeye with Bone - 29.50€" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Grilled Sirloin - 22€" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Grilled Octopus - 20€" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Grilled Lamb - 18€" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Grilled Porchetta - 18€" loading="lazy"></div>
     </section>
 
-    <!-- 🍺 BEBIDAS PANEL - Drinks divided by sections -->
-    <section id="panel-bebidas" class="tab-panel" role="tabpanel">
-      
-      <!-- CERVEZAS / BEERS -->
-      <div class="section-label">Cervezas / Beers</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/93pnb5i5_IMG-20260324-WA0047.jpg" 
-          alt="Cervezas - Estrella Caña 1.50€, Estrella Jarra 3€, Heineken 3€, Cerveza con limón 3€, Cerveza sin alcohol 3€"
-          loading="lazy"
-        >
+    <!-- TAB: MENU -->
+    <section id="panel-tapas" class="tab-panel" role="tabpanel">
+      <div class="section-header">
+        BURGER
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Classic Burger" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Cheese Burger" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Bacon Burger" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Mushroom Burger" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Veggie Burger" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Light Green Burger" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Mini Sliders x3" loading="lazy"></div>
 
-      <!-- VINOS TINTOS / RED WINES -->
-      <div class="section-label">Vinos Tintos / Red Wines</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/xzdayqw2_IMG-20260324-WA0037.jpg" 
-          alt="Vinos Tintos - Tempranillo, Bar Argentino Malbec, Hito Ribera del Duero, Marqués de Cáceres, Protos, Selección del Sumiller, Vino Norte"
-          loading="lazy"
-        >
+      <div class="section-header">
+        TAPAS
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Stuffed Eggs" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Mortadella Tapa" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Bread with Lard & Ham" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Aioli with Olives" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Chicharrones" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Croquettes" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Patatas Bravas" loading="lazy"></div>
 
-      <!-- COCKTAILS CLÁSICOS -->
-      <div class="section-label">Cocktails Clásicos</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/smb821p9_IMG-20260324-WA0040.jpg" 
-          alt="Cocktails Clásicos - Mojito 8€, Margarita 8€, Piña Colada 8€, Daiquiri 8€, Aperol Spritz 7€, Gin Tonic 7€"
-          loading="lazy"
-        >
+      <div class="section-header">
+        PASTA
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Bolognese" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Carbonara" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Pesto" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Arrabiata" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Pasta with Ribs" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Seafood Pasta" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Truffle Pasta" loading="lazy"></div>
 
-      <!-- COCKTAIL SIGNATURE -->
-      <div class="section-label">Cocktail Signature</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/bhtoh5tx_IMG-20260324-WA0030.jpg" 
-          alt="Cocktail Light Green - Aloe Vodka - 7€"
-          loading="lazy"
-        >
+      <div class="section-header">
+        SIDES
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Fries" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Sweet Potato Fries" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Grilled Vegetables" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Mashed Potato" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Basmati Rice" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Mixed Salad" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Coleslaw" loading="lazy"></div>
 
-      <!-- REFRESCOS / ZUMOS -->
-      <div class="section-label">Refrescos / Zumos</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/xhpbdzmv_IMG-20260324-WA0031.jpg" 
-          alt="Bebidas - Agua con/sin gas 2.50€, Coca-Cola 2.80€, Coca-Cola Zero 2.80€, Fanta Naranja 2.80€, Sprite 2.80€, Zumo de Naranja 3€, Zumo de Piña 3€, Zumo de Melocotón 3€, Desserts also shown"
-          loading="lazy"
-        >
+      <div class="section-header">
+        SALADS
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Caesar Salad" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Greek Salad" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Caprese" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Tuna Salad" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Avocado Salad" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Quinoa Bowl" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Burrata" loading="lazy"></div>
 
+      <div class="section-header">
+        DESSERTS
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
+      </div>
+      <div class="card"><img src="res/placeholder.png" alt="Fruit & Chocolate" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Tiramisu" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Cheesecake" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Ice Cream" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Brownie" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Panna Cotta" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Crème Brûlée" loading="lazy"></div>
     </section>
 
-    <!-- 🍽️ PLATOS PANEL - All other food -->
-    <section id="panel-platos" class="tab-panel" role="tabpanel">
-      
-      <!-- BREAKFAST -->
-      <div class="section-label">Desayuno / Breakfast</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/be7k3og1_IMG-20260324-WA0032.jpg" 
-          alt="Desayuno - Breakfast with drink included - 9€"
-          loading="lazy"
-        >
+    <!-- TAB: DRINKS -->
+    <section id="panel-drinks" class="tab-panel" role="tabpanel">
+      <div class="section-header">
+        WINES
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Tempranillo" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Argentine Malbec" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Ribera del Duero" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Marqués de Cáceres" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Protos Reserva" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Rosé Wine" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="White Wine" loading="lazy"></div>
 
-      <!-- PASTA -->
-      <div class="section-label">Pasta</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/7f8ok0z1_IMG-20260324-WA0036.jpg" 
-          alt="Pasta, sugo y costillas mixtas - Pasta, tomato sauce and mixed ribs - 14€"
-          loading="lazy"
-        >
+      <div class="section-header">
+        BEER
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Draught Beer Small" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Draught Beer Large" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Heineken" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Beer with Lemon" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Non-alcoholic Beer" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Craft IPA" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Craft Stout" loading="lazy"></div>
 
-      <!-- RICE DISHES -->
-      <div class="section-label">Arroz / Rice</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/nlbr7mgj_IMG-20260324-WA0046.jpg" 
-          alt="Arroz basmati con muslo de pollo a la parrilla - Basmati rice with grilled chicken leg - 12€"
-          loading="lazy"
-        >
+      <div class="section-header">
+        SOFT DRINKS
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
+      <div class="card"><img src="res/placeholder.png" alt="Still Water" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Sparkling Water" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Coca-Cola" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Coca-Cola Zero" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Fanta Orange" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Orange Juice" loading="lazy"></div>
+      <div class="card"><img src="res/placeholder.png" alt="Pineapple Juice" loading="lazy"></div>
+    </section>
 
-      <!-- TAPAS -->
-      <div class="section-label">Tapas</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/qxzxhyzz_IMG-20260324-WA0029.jpg" 
-          alt="Tapas - Huevos rellenos 5.50€, Tapa de mortadela 6.50€, Pan con manteca y jamón 6€, Alioli con aceitunas 4€, Chicharrones con guacamole 7€"
-          loading="lazy"
-        >
+    <!-- TAB: LIVE MUSIC SHOWS -->
+    <section id="panel-music" class="tab-panel" role="tabpanel">
+      <div class="section-header">
+        LIVE MUSIC SHOWS
+        <div class="ornament"><span class="ornament-icon">✦</span></div>
       </div>
-
-      <!-- OTHER PLATOS -->
-      <div class="section-label">Otros Platos</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/i4eyog77_IMG-20260324-WA0048.jpg" 
-          alt="Tortilla de papa con ensalada de col y queso - Potato tortilla with cabbage salad and cheese - 9€"
-          loading="lazy"
-        >
-      </div>
-
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/ucc5y89z_IMG-20260324-WA0042.jpg" 
-          alt="Mich con Mustaza - Mich with Mustard - 9€"
-          loading="lazy"
-        >
-      </div>
-
-      <!-- DESSERTS -->
-      <div class="section-label">Postres / Desserts</div>
-      <div class="card">
-        <img 
-          src="https://customer-assets.emergentagent.com/job_vanilla-menu-hub/artifacts/o1kyb7g8_IMG-20260324-WA0044.jpg" 
-          alt="Postre de frutas, chocolate y helado - Fruit, chocolate and ice cream dessert - 8€"
-          loading="lazy"
-        >
-      </div>
-
+      <div class="card"><img src="res/show-1.png" alt="Live Music Show 1" loading="lazy"></div>
+      <div class="card"><img src="res/show-2.jpeg" alt="Live Music Show 2" loading="lazy"></div>
     </section>
 
     <!-- FOOTER -->
@@ -511,6 +594,22 @@
   </main>
 
   <!-- ============================================
+       FLOATING ACTION BUTTONS (Left Side)
+       ============================================ -->
+  <div class="fab-container" role="navigation" aria-label="Contacto y ubicación">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/34633304131" class="fab" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+      <!-- WhatsApp SVG Vector -->
+      <svg viewBox="0 0 24 24"><path d="M12.01 2.01c-5.52 0-10 4.48-10 10 0 2.16.69 4.15 1.84 5.78l-1.4 4.16 4.34-1.13c1.58 1.05 3.47 1.67 5.51 1.67 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.55 14.5c-.24.67-1.18 1.25-1.78 1.34-.54.08-1.25.13-3.08-.63-2.2-1.02-3.6-3.26-3.71-3.41-.11-.14-.88-1.17-.88-2.22 0-1.05.54-1.57.74-1.79.2-.21.43-.27.57-.27.14 0 .28 0 .4.01.12.01.28-.05.43.32.16.37.54 1.33.59 1.43.05.1.09.21.02.35-.07.14-.11.23-.21.35-.11.12-.22.28-.31.37-.09.09-.19.19-.08.38.12.19.53.86 1.14 1.4.78.69 1.44.91 1.63 1.01.19.1.31.08.42-.04.11-.12.48-.56.61-.75.12-.19.25-.16.42-.1.18.06 1.12.53 1.31.63.19.1.32.16.37.24.05.08.05.47-.19 1.14z"/></svg>
+    </a>
+    <!-- Location (Maps) -->
+    <a href="https://maps.app.goo.gl/USXSJQAjL3BvbmFz5" class="fab" target="_blank" rel="noopener noreferrer" aria-label="Cómo llegar en Google Maps">
+      <!-- Location Pin SVG Vector -->
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+    </a>
+  </div>
+
+  <!-- ============================================
        BACK-TO-TOP BUTTON
        ============================================ -->
   <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
@@ -518,24 +617,17 @@
   </button>
 
   <!-- ============================================
-       JAVASCRIPT - Tab switching & scroll behavior
-       All functionality in one script block
+       JAVASCRIPT
        ============================================ -->
   <script>
-    // ========================================
-    // TAB SWITCHING - Event delegation pattern
-    // ========================================
-    // Single click listener on the nav element for better performance
     document.getElementById('tabBar').addEventListener('click', function(e) {
-      // Find the closest button element (handles clicks on button content)
       const clickedTab = e.target.closest('.tab-btn');
-      if (!clickedTab) return; // Not a tab button, ignore
+      if (!clickedTab) return;
 
-      // Get the target panel ID from data attribute
       const targetId = clickedTab.dataset.target;
       if (!targetId) return;
 
-      // Remove active class from all tabs and panels
+      // Deactivate all navigation tabs and panels
       document.querySelectorAll('.tab-btn').forEach(btn => {
         btn.classList.remove('active');
         btn.setAttribute('aria-selected', 'false');
@@ -544,30 +636,42 @@
         panel.classList.remove('active');
       });
 
-      // Add active class to clicked tab and corresponding panel
+      // Activate selected
       clickedTab.classList.add('active');
       clickedTab.setAttribute('aria-selected', 'true');
       document.getElementById(targetId).classList.add('active');
 
-      // Smooth scroll to top when switching tabs
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // ========================================
-    // BACK-TO-TOP BUTTON - Show/hide on scroll
-    // ========================================
+    // Special logic for the Live Music Floating Balloon
+    document.getElementById('musicFab').addEventListener('click', function() {
+      // Deactivate the standard tabs since this acts like a 4th tab but without a main nav entry
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.setAttribute('aria-selected', 'false');
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.remove('active');
+      });
+
+      // Activate Music Panel
+      document.getElementById('panel-music').classList.add('active');
+      
+      // Scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     const backToTopBtn = document.getElementById('backToTop');
     
-    // Show button after scrolling down 280px
     window.addEventListener('scroll', function() {
       if (window.scrollY > 280) {
         backToTopBtn.classList.add('show');
       } else {
         backToTopBtn.classList.remove('show');
       }
-    }, { passive: true }); // Passive listener for better scroll performance
+    }, { passive: true });
 
-    // Smooth scroll to top on button click
     backToTopBtn.addEventListener('click', function() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -575,36 +679,3 @@
 
 </body>
 </html>
-
-<!--
-============================================
-IMAGE REFERENCE - All menu images
-============================================
-
-CARNES (🥩):
-1. IMG-20260324-WA0043.jpg - Wagyu Japonés a la Parrilla (35€)
-2. IMG-20260324-WA0045.jpg - Chuletón cortada con hueso (32.50€)
-3. IMG-20260324-WA0034.jpg - Costata cortada con hueso (29.50€)
-4. IMG-20260324-WA0035.jpg - Solomillo a la Parrilla (22€)
-5. IMG-20260324-WA0038.jpg - Pulpo a la Parrilla (20€)
-6. IMG-20260324-WA0033.jpg - Cordero a la Parrilla (18€)
-7. IMG-20260324-WA0041.jpg - Porchetta de Cerdo (18€)
-8. IMG-20260324-WA0039.jpg - Cortada de ternera (18€)
-
-BEBIDAS (🍺):
-9. IMG-20260324-WA0047.jpg - Cervezas/Beers menu
-10. IMG-20260324-WA0037.jpg - Vinos Tintos/Red Wines
-11. IMG-20260324-WA0040.jpg - Cocktails Clásicos
-12. IMG-20260324-WA0030.jpg - Cocktail Light Green Signature
-13. IMG-20260324-WA0031.jpg - Refrescos, Zumos, and Desserts
-
-PLATOS (🍽️):
-14. IMG-20260324-WA0032.jpg - Desayuno/Breakfast (9€)
-15. IMG-20260324-WA0036.jpg - Pasta con costillas (14€)
-16. IMG-20260324-WA0046.jpg - Arroz basmati con pollo (12€)
-17. IMG-20260324-WA0029.jpg - Tapas variadas
-18. IMG-20260324-WA0048.jpg - Tortilla de papa (9€)
-19. IMG-20260324-WA0042.jpg - Mich con Mustaza (9€)
-20. IMG-20260324-WA0044.jpg - Postre de frutas (8€)
-
--->
