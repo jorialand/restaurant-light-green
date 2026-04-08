@@ -5,5 +5,5 @@
 !.gitignore
 !logo.png
 !placeholder.png
-!show-1.png
-!show-2.jpeg
+!Show-*.png
+!Show-*.jpeg
