@@ -1,682 +1,462 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Light Green - Menú Digital</title>
+  <title>Light Green Bar &amp; Grill — Digital Menu</title>
+  <meta name="description" content="Light Green Bar &amp; Grill — Grill experience, bio and protein food. Golf del Sur, Tenerife. Open daily 11–23h.">
+  <link rel="canonical" href="https://lightgreen.vercel.app">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="res/menu/0-logo-transparent.webp">
   <style>
-    /* ============================================
-       CSS CUSTOM PROPERTIES - Brand Colors
-       ============================================ */
     :root {
-      --green-dark: #141f14;
-      --green-mid: #2b5226;
       --gold: #c9a84c;
       --gold-light: #e8c97a;
-      --cream: #f4efe5;
+      --cream: #f0e8d5;
+      --green-dark: #0a0806;
+      --green-mid: #140e0a;
+      --text-dim: rgba(240,232,213,0.65);
+      --card-bg: transparent;
+      --header-h: 170px;
+      --nav-h: 52px;
+      --font-body: 'Cormorant Garamond', serif;
     }
-
-    /* ============================================
-       RESET & BASE STYLES
-       ============================================ */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Lato', sans-serif;
       background-color: var(--green-dark);
+      background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('res/background.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
       color: var(--cream);
-      line-height: 1.6;
+      line-height: 1.5;
       overflow-x: hidden;
-    }
-
-    /* ============================================
-       FIXED HEADER - Always visible at top
-       ============================================ */
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 196px; /* Increased to fit double larger logo */
-      background: linear-gradient(135deg, #0a120a 0%, var(--green-dark) 100%);
-      border-bottom: 2px solid var(--gold);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
-    
-    .header-content {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      max-width: 560px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 16px;
-    }
-
-    .header-content img {
-      max-height: 180px; /* Double size */
-      mix-blend-mode: lighten;
-    }
-
-    .lang-btn {
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold-light);
-      border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      cursor: pointer;
-    }
-
-    /* ============================================
-       TAB BAR - Fixed below header
-       ============================================ */
-    nav {
-      position: fixed;
-      top: 196px; /* Matches header height */
-      left: 0;
-      right: 0;
-      height: 58px;
-      background-color: rgba(20, 31, 20, 0.95);
-      backdrop-filter: blur(8px);
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      z-index: 999;
-      border-bottom: 1px solid rgba(201, 168, 76, 0.3);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-    }
-
-    /* Tab buttons with role="tab" for accessibility */
-    .tab-btn {
-      flex: 1;
-      height: 100%;
-      background: none;
-      border: none;
-      color: var(--cream);
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      position: relative;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      text-transform: uppercase;
-    }
-
-    .tab-btn:hover {
-      background-color: var(--green-mid);
-      color: var(--gold-light);
-    }
-
-    .tab-btn.active {
-      color: var(--gold-light);
-    }
-
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background-color: var(--gold);
-      box-shadow: 0 0 8px var(--gold);
-    }
-
-    /* ============================================
-       MAIN CONTENT - Scrollable area
-       ============================================ */
-    main {
-      /* Padding accounts for header(196px) + tab bar(58px) + extra spacing(14px) */
-      padding-top: calc(196px + 58px + 14px);
-      padding-bottom: 80px;
       min-height: 100vh;
     }
 
-    /* Tab panels - only one visible at a time */
-    .tab-panel {
-      display: none;
-      padding: 0 12px;
+    /* ── HEADER ── */
+    header {
+      position: fixed; top:0; left:0; right:0;
+      height: var(--header-h);
+      background: linear-gradient(180deg,#050505 0%,#0a0a0a 100%);
+      border-bottom: 1.5px solid var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1000;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+    }
+    .header-inner{position:relative;width:100%;max-width:560px;display:flex;align-items:center;justify-content:center;padding:0 16px}
+    header img{max-height:148px;object-fit:contain;filter:drop-shadow(0 2px 8px rgba(201,168,76,0.3))}
+    .lang-btn {
+      position:absolute;right:16px;top:50%;transform:translateY(-50%);
+      background:transparent;border:1px solid var(--gold);color:var(--gold-light);
+      border-radius:999px;padding:4px 12px;font-size:.72rem;font-weight:700;
+      cursor:pointer;font-family:'Lato',sans-serif;letter-spacing:.05em;
+      transition:background .2s,color .2s;
+    }
+    .lang-btn:hover{background:var(--gold);color:#000}
+
+    /* ── NAV TABS ── */
+    nav {
+      position:fixed;top:var(--header-h);left:0;right:0;height:var(--nav-h);
+      background:rgba(5,5,5,0.96);backdrop-filter:blur(10px);
+      display:flex;justify-content:space-around;align-items:stretch;
+      z-index:999;border-bottom:1px solid rgba(201,168,76,0.25);
+    }
+    .tab-btn {
+      flex:1;background:none;border:none;color:rgba(240,232,213,0.7);
+      font-family:'Lato',sans-serif;font-size:.82rem;font-weight:700;
+      letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+      position:relative;transition:color .25s,background .25s;
+    }
+    .tab-btn:hover{color:var(--gold-light);background:rgba(201,168,76,0.06)}
+    .tab-btn.active{color:var(--gold-light)}
+    .tab-btn.active::after{
+      content:'';position:absolute;bottom:0;left:10%;right:10%;
+      height:2px;background:var(--gold);
+      box-shadow:0 0 10px var(--gold);border-radius:2px;
     }
 
-    .tab-panel.active {
-      display: block;
-      animation: fadeUp 0.28s ease;
-    }
+    /* ── MAIN ── */
+    main{padding-top:calc(var(--header-h) + var(--nav-h) + 16px);padding-bottom:90px;min-height:100vh}
+    .tab-panel{display:none;padding:0 12px;animation:fadeUp .25s ease}
+    .tab-panel.active{display:block}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* ============================================
-       DISCLAIMER (Global)
-       ============================================ */    
+    /* ── DISCLAIMER ── */
     .disclaimer {
-      text-align: center;
-      color: var(--gold-light);
-      font-style: italic;
-      margin: 0 16px 24px 108px; /* Left margin avoids music-fab */
-      font-size: 0.85rem;
-      border: 1px solid var(--gold);
-      padding: 10px;
-      border-radius: 8px;
-      background: rgba(20, 31, 20, 0.4);
+      font-family:'Playfair Display',serif;font-style:italic;font-size:.8rem;
+      color:var(--gold-light);text-align:center;
+      border:1px solid rgba(201,168,76,0.5);border-radius:6px;
+      padding:9px 14px;margin:0 12px 20px;
+      background:rgba(0,0,0,0.7);backdrop-filter:blur(5px);
+      box-shadow:0 4px 12px rgba(0,0,0,0.5);
     }
 
-    /* Desktop alignment correction for disclaimer */
-    @media (min-width: 1000px) {
-      .disclaimer {
-        margin: 0 auto 24px auto;
-        max-width: 560px;
-      }
+    /* ── SECTION HEADER ── */
+    .sec-hdr {
+      font-family:'Playfair Display',serif;font-size:1.15rem;letter-spacing:.25em;
+      text-transform:uppercase;color:var(--cream);text-align:center;
+      margin:32px 0 18px;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7);
     }
+    .sec-hdr .orn{display:flex;align-items:center;justify-content:center;margin-top:7px;gap:12px}
+    .sec-hdr .orn::before,.sec-hdr .orn::after{content:'';flex:1;max-width:70px;height:1px;background:var(--gold);opacity:.5}
 
-    /* ============================================
-       SECTION HEADERS
-       ============================================ */
-    .section-header {
-      font-family: Georgia, serif;
-      text-transform: uppercase;
-      color: var(--cream);
-      letter-spacing: 6px;
-      font-size: 1.5rem;
-      text-align: center;
-      margin: 32px 0 20px;
-    }
-    .section-header .ornament {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 8px;
-    }
-    .section-header .ornament::before,
-    .section-header .ornament::after {
-      content: "";
-      flex: 1;
-      max-width: 80px;
-      border-bottom: 1px solid var(--gold);
-      opacity: 0.5;
-    }
-    .section-header .ornament::before {
-      margin-right: 16px;
-    }
-    .section-header .ornament::after {
-      margin-left: 16px;
-    }
-    .section-header .ornament-icon {
-      color: var(--gold);
-      font-size: 1rem;
-    }
-
-    /* ============================================
-       MENU CARDS - Full Image Unit
-       ============================================ */
+    /* ── DISH CARD ── */
     .card {
-      max-width: 480px;
-      margin: 0 auto 20px;
-      border-radius: 12px;
-      overflow: hidden;
-      border: 2px solid var(--gold);
-      box-shadow: 0 4px 16px rgba(201, 168, 76, 0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background: rgba(20, 31, 20, 0.6);
+      max-width:480px;margin:0 auto 16px;overflow:hidden;
+      background:var(--card-bg);border:none;box-shadow:none;
+      transition:transform .3s ease;
     }
+    .card:hover{transform:translateY(-3px)}
+    .card-img-wrap{
+      position:relative;width:100%;aspect-ratio:1/1;background:var(--green-mid);
+      border-radius:50%;overflow:hidden;
+      box-shadow:0 8px 32px rgba(0,0,0,0.7), 0 0 0 2px rgba(201,168,76,0.15);
+    }
+    .card-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .4s}
+    .card-img-wrap img.loading{opacity:0}
+    .card-img-wrap .skeleton{
+      position:absolute;inset:0;
+      background:linear-gradient(90deg,#140e0a 25%,#1c140e 50%,#140e0a 75%);
+      background-size:200% 100%;animation:shimmer 1.6s infinite;
+    }
+    @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+    .card-body{padding:16px 8px 14px;text-align:center}
+    .card-name {
+      font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;
+      color:var(--cream);display:flex;flex-direction:column;align-items:center;gap:4px;
+      text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7);
+    }
+    .card-price{font-family:'Playfair Display',serif;color:var(--gold);font-weight:700;white-space:nowrap;font-size:1.05rem;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
+    .card-desc{font-family:var(--font-body);font-size:.95rem;color:var(--text-dim);margin-top:6px;line-height:1.4;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
 
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(201, 168, 76, 0.5);
-    }
+    /* ── DRINKS LIST ── */
+    .drinks-header-img{width:100%;max-width:480px;display:block;margin:0 auto 12px;border-radius:10px;overflow:hidden}
+    .drinks-header-img img{width:100%;height:auto;max-height:280px;object-fit:contain;display:block}
 
-    .card img {
-      display: block;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
+    .drink-item {
+      max-width:480px;margin:0 auto;padding:12px 0;
+      border-bottom:1px solid rgba(201,168,76,0.12);
     }
+    .drink-item:last-child{border-bottom:none}
+    .drink-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+    .drink-name{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--cream);text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
+    .drink-price{font-family:'Playfair Display',serif;color:var(--gold);font-weight:700;font-size:.95rem;white-space:nowrap;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
+    .drink-prices{display:flex;gap:10px;flex-shrink:0}
+    .drink-prices span{font-family:'Playfair Display',serif;color:var(--gold);font-size:.9rem;font-weight:600;white-space:nowrap;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
+    .drink-prices .lbl{font-family:'Lato',sans-serif;color:var(--text-dim);font-size:.7rem;font-weight:400;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
+    .drink-desc{font-family:var(--font-body);font-size:.95rem;color:var(--text-dim);margin-top:3px;line-height:1.4;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
+    .drink-ingr{font-family:var(--font-body);font-size:.95rem;color:rgba(232,201,122,0.55);margin-top:2px;text-shadow:0 2px 6px rgba(0,0,0,0.9), 0 0 16px rgba(0,0,0,0.7)}
 
-    /* ============================================
-       FAB (Floating Action Buttons) on Left
-       ============================================ */
-    .fab-container {
-      position: fixed;
-      bottom: 24px;
-      left: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 999;
+    /* ── FABs ── */
+    .fab-left{position:fixed;bottom:24px;left:18px;display:flex;flex-direction:column;gap:13px;z-index:997}
+    .fab{
+      width:48px;height:48px;border-radius:50%;
+      background:var(--green-mid);border:1.5px solid var(--gold);
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;color:var(--gold-light);text-decoration:none;
+      box-shadow:0 4px 14px rgba(0,0,0,0.5);
+      transition:transform .2s,background .2s;
     }
+    .fab:hover{transform:scale(1.1);background:#0a120a}
+    .fab svg{width:22px;height:22px;fill:currentColor}
 
-    .fab {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background-color: var(--green-mid);
-      border: 2px solid var(--gold);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease;
-      color: var(--gold-light);
-      text-decoration: none;
-    }
-
-    .fab:hover {
-      transform: scale(1.1);
-      background-color: var(--green-dark);
-    }
-    
-    .fab svg {
-      width: 24px;
-      height: 24px;
-      fill: currentColor;
-    }
-
-    /* ============================================
-       LIVE MUSIC FAB (Top Left)
-       ============================================ */
     .music-fab {
-      position: fixed;
-      top: 270px; /* Sits below the header + nav */
-      left: 24px;
-      width: 68px; /* Larger than other FABs */
-      height: 68px;
-      border-radius: 50%;
-      background-color: var(--gold);
-      color: var(--green-dark);
-      border: 3px solid var(--cream);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      z-index: 998;
-      font-weight: 800;
-      font-size: 0.70rem;
-      text-align: center;
-      line-height: 1.1;
-      transition: transform 0.2s ease;
+      position:fixed;top:calc(var(--header-h) + var(--nav-h) + 14px);left:18px;
+      width:64px;height:64px;border-radius:50%;
+      background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);
+      color:var(--gold-light);
+      border:1px solid rgba(201,168,76,0.5);
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      font-family:'Lato',sans-serif;font-size:.58rem;font-weight:700;text-align:center;line-height:1.15;
+      letter-spacing:.05em;text-transform:uppercase;
+      cursor:pointer;z-index:996;
+      box-shadow:0 4px 16px rgba(0,0,0,0.7);
+      transition:transform .2s, border-color .2s, box-shadow .2s;
+    }
+    .music-fab:hover{transform:scale(1.08);border-color:var(--gold);box-shadow:0 4px 20px rgba(201,168,76,0.2)}
+    .music-fab .note{font-size:1.1rem;line-height:1;margin-bottom:3px;text-shadow:0 0 8px rgba(201,168,76,0.4)}
+
+    /* ── BACK TO TOP ── */
+    .btt{
+      position:fixed;bottom:24px;right:18px;width:44px;height:44px;
+      border-radius:50%;background:rgba(5,5,5,0.9);border:1.5px solid var(--gold);
+      color:var(--gold);font-size:1.3rem;display:none;align-items:center;justify-content:center;
+      cursor:pointer;z-index:997;box-shadow:0 4px 12px rgba(0,0,0,0.4);
+      transition:background .2s,transform .2s;
+    }
+    .btt.show{display:flex}
+    .btt:hover{background:var(--green-mid);transform:scale(1.1)}
+
+    /* ── FOOTER ── */
+    footer{
+      text-align:center;padding:16px;font-size:.78rem;color:var(--gold-light);
+      margin:0 12px 24px;border:1px solid rgba(201,168,76,0.5);border-radius:6px;
+      background:rgba(0,0,0,0.7);backdrop-filter:blur(5px);box-shadow:0 4px 12px rgba(0,0,0,0.5);
     }
 
-    .music-fab:hover {
-      transform: scale(1.1);
-    }
+    /* ── MUSIC PANEL ── */
+    .show-card{max-width:480px;margin:0 auto 20px;border-radius:10px;overflow:hidden;border:1.5px solid rgba(201,168,76,0.4)}
+    .show-card img{width:100%;display:block}
 
-    .music-fab span {
-      font-size: 1.4rem;
-      margin-bottom: 2px;
-    }
-
-    /* Hide large UI overlays on very small screens to avoid clutter */
-    @media (max-width: 360px) {
-      .music-fab {
-        width: 50px;
-        height: 50px;
-        font-size: 0.6rem;
-      }
-      .music-fab span { font-size: 1rem; }
-    }
-
-    /* ============================================
-       BACK-TO-TOP BUTTON
-       ============================================ */
-    .back-to-top {
-      position: fixed;
-      bottom: 24px; 
-      right: 24px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background-color: rgba(20, 31, 20, 0.9);
-      border: 2px solid var(--gold);
-      color: var(--gold);
-      font-size: 1.5rem;
-      display: none; /* Hidden by default */
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 998;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    .back-to-top.show {
-      display: flex;
-    }
-
-    .back-to-top:hover {
-      background-color: var(--green-mid);
-      transform: scale(1.1);
-    }
-
-    /* ============================================
-       FOOTER
-       ============================================ */
-    footer {
-      text-align: center;
-      padding: 32px 20px;
-      font-size: 0.85rem;
-      color: var(--gold);
-      opacity: 0.7;
-      border-top: 1px solid rgba(201, 168, 76, 0.2);
-      margin-top: 40px;
-    }
-
-    /* ============================================
-       RESPONSIVE DESIGN (Desktop centered constraint)
-       ============================================ */
-    @media (min-width: 640px) {
-      .tab-panel {
-        padding: 0 24px;
-      }
-    }
-
-    @media (min-width: 1000px) {
-      main {
-        max-width: 560px;
-        margin: 0 auto;
-      }
-    }
+    /* ── RESPONSIVE ── */
+    @media(min-width:640px){.tab-panel{padding:0 24px}}
+    @media(min-width:1000px){main{max-width:560px;margin:0 auto}}
   </style>
 </head>
 <body>
 
-  <!-- ============================================
-       FIXED HEADER
-       ============================================ -->
-  <header>
-    <div class="header-content">
-      <img src="res/logo.png" alt="Light Green Bar & Grill">
-      <!-- LANGUAGE TOGGLE: wire up in next sprint. -->
-      <button aria-label="Toggle language" class="lang-btn">EN | ES</button>
-    </div>
-  </header>
-
-  <!-- ============================================
-       TAB BAR NAVIGATION
-       ============================================ -->
-  <nav role="tablist" id="tabBar">
-    <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="panel-grill" data-target="panel-grill">
-      GRILL MENU
-    </button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-tapas" data-target="panel-tapas">
-      MENU
-    </button>
-    <button class="tab-btn" role="tab" aria-selected="false" aria-controls="panel-drinks" data-target="panel-drinks">
-      DRINKS
-    </button>
-  </nav>
-
-  <!-- ============================================
-       LIVE MUSIC BALLOON FLAG (Top Left)
-       ============================================ -->
-  <div class="music-fab" id="musicFab" role="button" aria-label="Live Music Shows">
-    <span>🎵</span>
-    Live<br>Music
+<header>
+  <div class="header-inner">
+    <img src="res/menu/0-logo-transparent.webp" alt="Light Green Bar &amp; Grill">
+    <button class="lang-btn" id="langBtn" aria-label="Toggle language">EN | ES</button>
   </div>
+</header>
 
-  <!-- ============================================
-       MAIN CONTENT - Scrollable panels
-       ============================================ -->
-  <main>
-    
-    <!-- GLOBAL DISCLAIMER -->
-    <div class="disclaimer">Grill menu is available starting from 6PM. Rest of the menu is available all day round.</div>
+<nav role="tablist" id="tabBar">
+  <button class="tab-btn active" role="tab" aria-selected="true" data-tab="grill" id="tab-grill">GRILL MENU</button>
+  <button class="tab-btn" role="tab" aria-selected="false" data-tab="menu" id="tab-menu">MENU</button>
+  <button class="tab-btn" role="tab" aria-selected="false" data-tab="drinks" id="tab-drinks">DRINKS</button>
+</nav>
 
-    <!-- TAB: GRILL MENU -->
-    <section id="panel-grill" class="tab-panel active" role="tabpanel">
-      <div class="card"><img src="res/placeholder.png" alt="Japanese Wagyu - 35€" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="T-Bone with Bone - 32.50€" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Ribeye with Bone - 29.50€" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Grilled Sirloin - 22€" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Grilled Octopus - 20€" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Grilled Lamb - 18€" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Grilled Porchetta - 18€" loading="lazy"></div>
-    </section>
+<div class="music-fab" id="musicFab" role="button" aria-label="Live Music Shows" tabindex="0">
+  <span class="note">🎵</span>Live<br>Music
+</div>
 
-    <!-- TAB: MENU -->
-    <section id="panel-tapas" class="tab-panel" role="tabpanel">
-      <div class="section-header">
-        BURGER
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Classic Burger" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Cheese Burger" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Bacon Burger" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Mushroom Burger" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Veggie Burger" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Light Green Burger" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Mini Sliders x3" loading="lazy"></div>
+<main>
+  <section id="panel-grill" class="tab-panel active" role="tabpanel" aria-labelledby="tab-grill"></section>
+  <section id="panel-menu"  class="tab-panel"        role="tabpanel" aria-labelledby="tab-menu"></section>
+  <section id="panel-drinks" class="tab-panel"       role="tabpanel" aria-labelledby="tab-drinks"></section>
+  <section id="panel-music"  class="tab-panel"       role="tabpanel">
+    <div class="sec-hdr">Live Music Shows<div class="orn"><span style="color:var(--gold)">✦</span></div></div>
+    <div class="show-card"><img src="res/Show-DJLINO.png" alt="DJ Lino" loading="lazy"></div>
+    <div class="show-card"><img src="res/Show-KennyG.png" alt="Kenny G" loading="lazy"></div>
+    <div class="show-card"><img src="res/Show-SINUBLE.png" alt="SINUBLE" loading="lazy"></div>
+  </section>
 
-      <div class="section-header">
-        TAPAS
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Stuffed Eggs" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Mortadella Tapa" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Bread with Lard & Ham" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Aioli with Olives" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Chicharrones" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Croquettes" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Patatas Bravas" loading="lazy"></div>
+  <footer>Light Green Bar &amp; Grill<br>C. San Blas, local 4 &nbsp;·&nbsp; Golf del Sur, Tenerife</footer>
+</main>
 
-      <div class="section-header">
-        PASTA
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Bolognese" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Carbonara" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Pesto" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Arrabiata" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Pasta with Ribs" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Seafood Pasta" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Truffle Pasta" loading="lazy"></div>
+<div class="fab-left" role="navigation" aria-label="Contact &amp; location">
+  <a href="https://wa.me/34633304131" class="fab" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.01 2.01c-5.52 0-10 4.48-10 10 0 2.16.69 4.15 1.84 5.78l-1.4 4.16 4.34-1.13c1.58 1.05 3.47 1.67 5.51 1.67 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.55 14.5c-.24.67-1.18 1.25-1.78 1.34-.54.08-1.25.13-3.08-.63-2.2-1.02-3.6-3.26-3.71-3.41-.11-.14-.88-1.17-.88-2.22 0-1.05.54-1.57.74-1.79.2-.21.43-.27.57-.27.14 0 .28 0 .4.01.12.01.28-.05.43.32.16.37.54 1.33.59 1.43.05.1.09.21.02.35-.07.14-.11.23-.21.35-.11.12-.22.28-.31.37-.09.09-.19.19-.08.38.12.19.53.86 1.14 1.4.78.69 1.44.91 1.63 1.01.19.1.31.08.42-.04.11-.12.48-.56.61-.75.12-.19.25-.16.42-.1.18.06 1.12.53 1.31.63.19.1.32.16.37.24.05.08.05.47-.19 1.14z"/></svg>
+  </a>
+  <a href="https://maps.app.goo.gl/USXSJQAjL3BvbmFz5" class="fab" target="_blank" rel="noopener" aria-label="Google Maps">
+    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+  </a>
+</div>
 
-      <div class="section-header">
-        SIDES
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Fries" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Sweet Potato Fries" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Grilled Vegetables" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Mashed Potato" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Basmati Rice" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Mixed Salad" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Coleslaw" loading="lazy"></div>
+<button class="btt" id="btt" aria-label="Back to top">↑</button>
 
-      <div class="section-header">
-        SALADS
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Caesar Salad" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Greek Salad" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Caprese" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Tuna Salad" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Avocado Salad" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Quinoa Bowl" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Burrata" loading="lazy"></div>
+<script>
+(function(){
+  /* ── Language ── */
+  const LANG_KEY = 'lg_lang';
+  let lang = localStorage.getItem(LANG_KEY);
+  if (!lang) {
+    const nav = navigator.language || navigator.userLanguage || 'en';
+    lang = nav.toLowerCase().startsWith('es') ? 'es' : 'en';
+    localStorage.setItem(LANG_KEY, lang);
+  }
+  document.documentElement.lang = lang;
 
-      <div class="section-header">
-        DESSERTS
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Fruit & Chocolate" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Tiramisu" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Cheesecake" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Ice Cream" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Brownie" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Panna Cotta" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Crème Brûlée" loading="lazy"></div>
-    </section>
+  const I18N = {
+    en: {
+      tabs: { grill: 'GRILL MENU', menu: 'MENU', drinks: 'DRINKS' },
+      disclaimer: 'Grill menu is available starting from 6 PM. Rest of the menu is available all day round.',
+      sections: { tapas:'Tapas', starters:'Starters', rice_pasta:'Rice & Pasta',
+        fish_seafood:'Fish & Seafood', salad:'Salad', kids_menu:'Kids Menu',
+        desserts_breakfast:'Desserts & Breakfast',
+        wines:'Wines', cocktails:'Cocktails', on_the_rocks:'On the Rocks',
+        beer:'Beer', soft_drinks:'Soft Drinks', juices:'Juices', coffee:'Coffee'
+      },
+      glass:'glass', bottle:'bottle'
+    },
+    es: {
+      tabs: { grill: 'CARTA GRILL', menu: 'MENÚ', drinks: 'BEBIDAS' },
+      disclaimer: 'El menú Grill está disponible a partir de las 6 PM. El resto del menú está disponible todo el día.',
+      sections: { tapas:'Tapas', starters:'Entrantes', rice_pasta:'Arroz & Pasta',
+        fish_seafood:'Pescado & Marisco', salad:'Ensaladas', kids_menu:'Menú Infantil',
+        desserts_breakfast:'Postres & Desayunos',
+        wines:'Vinos', cocktails:'Cócteles', on_the_rocks:'En las Rocas',
+        beer:'Cerveza', soft_drinks:'Refrescos', juices:'Zumos', coffee:'Café'
+      },
+      glass:'copa', bottle:'botella'
+    }
+  };
 
-    <!-- TAB: DRINKS -->
-    <section id="panel-drinks" class="tab-panel" role="tabpanel">
-      <div class="section-header">
-        WINES
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Tempranillo" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Argentine Malbec" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Ribera del Duero" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Marqués de Cáceres" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Protos Reserva" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Rosé Wine" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="White Wine" loading="lazy"></div>
+  function t(){ return I18N[lang] }
 
-      <div class="section-header">
-        BEER
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Draught Beer Small" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Draught Beer Large" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Heineken" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Beer with Lemon" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Non-alcoholic Beer" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Craft IPA" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Craft Stout" loading="lazy"></div>
+  document.getElementById('langBtn').textContent = lang === 'en' ? 'EN | ES' : 'ES | EN';
+  document.getElementById('langBtn').addEventListener('click', () => {
+    lang = lang === 'en' ? 'es' : 'en';
+    localStorage.setItem(LANG_KEY, lang);
+    document.documentElement.lang = lang;
+    buildAll();
+  });
 
-      <div class="section-header">
-        SOFT DRINKS
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/placeholder.png" alt="Still Water" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Sparkling Water" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Coca-Cola" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Coca-Cola Zero" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Fanta Orange" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Orange Juice" loading="lazy"></div>
-      <div class="card"><img src="res/placeholder.png" alt="Pineapple Juice" loading="lazy"></div>
-    </section>
-
-    <!-- TAB: LIVE MUSIC SHOWS -->
-    <section id="panel-music" class="tab-panel" role="tabpanel">
-      <div class="section-header">
-        LIVE MUSIC SHOWS
-        <div class="ornament"><span class="ornament-icon">✦</span></div>
-      </div>
-      <div class="card"><img src="res/Show-DJLINO.png" alt="Show live music DJ Lino" loading="lazy"></div>
-      <div class="card"><img src="res/Show-KennyG.png" alt="Show live music Kenny G" loading="lazy"></div>
-      <div class="card"><img src="res/Show-SINUBLE.png" alt="Show live music SINUBLE and Saxophonist Charly Delsouc" loading="lazy"></div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      Light Green Bar & Grill<br>
-      Golf del Sur, Tenerife
-    </footer>
-
-  </main>
-
-  <!-- ============================================
-       FLOATING ACTION BUTTONS (Left Side)
-       ============================================ -->
-  <div class="fab-container" role="navigation" aria-label="Contacto y ubicación">
-    <!-- WhatsApp -->
-    <a href="https://wa.me/34633304131" class="fab" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-      <!-- WhatsApp SVG Vector -->
-      <svg viewBox="0 0 24 24"><path d="M12.01 2.01c-5.52 0-10 4.48-10 10 0 2.16.69 4.15 1.84 5.78l-1.4 4.16 4.34-1.13c1.58 1.05 3.47 1.67 5.51 1.67 5.52 0 10-4.48 10-10s-4.48-10-10-10zm5.55 14.5c-.24.67-1.18 1.25-1.78 1.34-.54.08-1.25.13-3.08-.63-2.2-1.02-3.6-3.26-3.71-3.41-.11-.14-.88-1.17-.88-2.22 0-1.05.54-1.57.74-1.79.2-.21.43-.27.57-.27.14 0 .28 0 .4.01.12.01.28-.05.43.32.16.37.54 1.33.59 1.43.05.1.09.21.02.35-.07.14-.11.23-.21.35-.11.12-.22.28-.31.37-.09.09-.19.19-.08.38.12.19.53.86 1.14 1.4.78.69 1.44.91 1.63 1.01.19.1.31.08.42-.04.11-.12.48-.56.61-.75.12-.19.25-.16.42-.1.18.06 1.12.53 1.31.63.19.1.32.16.37.24.05.08.05.47-.19 1.14z"/></svg>
-    </a>
-    <!-- Location (Maps) -->
-    <a href="https://maps.app.goo.gl/USXSJQAjL3BvbmFz5" class="fab" target="_blank" rel="noopener noreferrer" aria-label="Cómo llegar en Google Maps">
-      <!-- Location Pin SVG Vector -->
-      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-    </a>
-  </div>
-
-  <!-- ============================================
-       BACK-TO-TOP BUTTON
-       ============================================ -->
-  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
-    ↑
-  </button>
-
-  <!-- ============================================
-       JAVASCRIPT
-       ============================================ -->
-  <script>
-    document.getElementById('tabBar').addEventListener('click', function(e) {
-      const clickedTab = e.target.closest('.tab-btn');
-      if (!clickedTab) return;
-
-      const targetId = clickedTab.dataset.target;
-      if (!targetId) return;
-
-      // Deactivate all navigation tabs and panels
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.remove('active');
-      });
-
-      // Activate selected
-      clickedTab.classList.add('active');
-      clickedTab.setAttribute('aria-selected', 'true');
-      document.getElementById(targetId).classList.add('active');
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  /* ── Intersection Observer for lazy images ── */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const img = entry.target;
+      const src = img.dataset.src;
+      if (!src) return;
+      img.src = src;
+      img.onload = () => {
+        img.classList.remove('loading');
+        const sk = img.previousElementSibling;
+        if (sk && sk.classList.contains('skeleton')) sk.style.display = 'none';
+      };
+      observer.unobserve(img);
     });
+  }, { rootMargin: '200px 0px' });
 
-    // Special logic for the Live Music Floating Balloon
-    document.getElementById('musicFab').addEventListener('click', function() {
-      // Deactivate the standard tabs since this acts like a 4th tab but without a main nav entry
-      document.querySelectorAll('.tab-btn').forEach(btn => {
-        btn.classList.remove('active');
-        btn.setAttribute('aria-selected', 'false');
-      });
-      document.querySelectorAll('.tab-panel').forEach(panel => {
-        panel.classList.remove('active');
-      });
+  function makeCard(item, l) {
+    const d = item[l] || item['en'];
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.innerHTML = `
+      <div class="card-img-wrap">
+        <div class="skeleton"></div>
+        <img class="loading" data-src="res/menu/${item.img.replace(/\.(png|jpg|jpeg)$/i,'.webp')}" alt="${d.name}" loading="lazy">
+      </div>
+      <div class="card-body">
+        <div class="card-name"><span>${d.name}</span><span class="card-price">${d.price}</span></div>
+        <div class="card-desc">${d.desc}</div>
+      </div>`;
+    observer.observe(div.querySelector('img'));
+    return div;
+  }
 
-      // Activate Music Panel
-      document.getElementById('panel-music').classList.add('active');
-      
-      // Scroll to top
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  function secHdr(key) {
+    const div = document.createElement('div');
+    div.className = 'sec-hdr';
+    div.innerHTML = `${t().sections[key]}<div class="orn"><span style="color:var(--gold)">✦</span></div>`;
+    return div;
+  }
+
+  function buildGrill(data) {
+    const panel = document.getElementById('panel-grill');
+    panel.innerHTML = `<div class="disclaimer" id="disclaimer">${t().disclaimer}</div>`;
+    data.grill.forEach(item => panel.appendChild(makeCard(item, lang)));
+  }
+
+  function buildMenu(data) {
+    const panel = document.getElementById('panel-menu');
+    panel.innerHTML = '';
+    const order = ['tapas','starters','rice_pasta','fish_seafood','salad','kids_menu','desserts_breakfast'];
+    order.forEach(key => {
+      const items = data.menu[key];
+      if (!items || !items.length) return;
+      panel.appendChild(secHdr(key));
+      items.forEach(item => panel.appendChild(makeCard(item, lang)));
     });
+  }
 
-    const backToTopBtn = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 280) {
-        backToTopBtn.classList.add('show');
-      } else {
-        backToTopBtn.classList.remove('show');
-      }
-    }, { passive: true });
+  function buildDrinks(data) {
+    const panel = document.getElementById('panel-drinks');
+    panel.innerHTML = '';
 
-    backToTopBtn.addEventListener('click', function() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Header image
+    const wrap = document.createElement('div');
+    wrap.className = 'drinks-header-img';
+    wrap.innerHTML = '<img src="res/menu/cocktails-transparent.webp" alt="Cocktails" loading="lazy">';
+    panel.appendChild(wrap);
+
+    const drinkOrder = ['wines','cocktails','on_the_rocks','beer','soft_drinks','juices','coffee'];
+    const d = data.drinks;
+
+    drinkOrder.forEach(key => {
+      const items = d[key];
+      if (!items || !items.length) return;
+      panel.appendChild(secHdr(key));
+
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'drink-item';
+
+        if (key === 'wines') {
+          const wNm = (lang === 'es' && item.name_es) ? item.name_es : item.name;
+          div.innerHTML = `
+            <div class="drink-top">
+              <span class="drink-name">${wNm}</span>
+              <span class="drink-prices">
+                <span><span class="lbl">${t().glass} </span>${item.price_glass}</span>
+                <span><span class="lbl">${t().bottle} </span>${item.price_bottle}</span>
+              </span>
+            </div>
+            <div class="drink-desc">${lang === 'es' ? item.desc_es : item.desc_en}</div>`;
+        } else if (key === 'cocktails') {
+          div.innerHTML = `
+            <div class="drink-top">
+              <span class="drink-name">${item.name}</span>
+              <span class="drink-price">${item.price}</span>
+            </div>
+            <div class="drink-ingr">${lang === 'es' ? item.ingredients_es : item.ingredients_en}</div>`;
+        } else {
+          const nm = (lang === 'es' && item.name_es) ? item.name_es : 
+                     (lang === 'en' && item.name_en) ? item.name_en : 
+                     item.name;
+          div.innerHTML = `
+            <div class="drink-top">
+              <span class="drink-name">${nm}</span>
+              <span class="drink-price">${item.price}</span>
+            </div>`;
+        }
+        panel.appendChild(div);
+      });
     });
-  </script>
+  }
 
+  /* ── Build all panels ── */
+  let menuData = null;
+  function buildAll() {
+    if (!menuData) return;
+    document.getElementById('tab-grill').textContent = t().tabs.grill;
+    document.getElementById('tab-menu').textContent = t().tabs.menu;
+    document.getElementById('tab-drinks').textContent = t().tabs.drinks;
+    buildGrill(menuData);
+    buildMenu(menuData);
+    buildDrinks(menuData);
+  }
+
+  fetch('menu.json')
+    .then(r => r.json())
+    .then(data => { menuData = data; buildAll(); })
+    .catch(e => console.error('Failed to load menu.json', e));
+
+  /* ── Tab switching ── */
+  const panels = { grill:'panel-grill', menu:'panel-menu', drinks:'panel-drinks' };
+  document.getElementById('tabBar').addEventListener('click', e => {
+    const btn = e.target.closest('.tab-btn');
+    if (!btn) return;
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+    document.getElementById(panels[btn.dataset.tab]).classList.add('active');
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+
+  /* ── Music FAB ── */
+  document.getElementById('musicFab').addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-music').classList.add('active');
+    window.scrollTo({ top:0, behavior:'smooth' });
+  });
+
+  /* ── Back to top ── */
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => { btt.classList.toggle('show', window.scrollY > 300); }, { passive:true });
+  btt.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+})();
+</script>
 </body>
 </html>

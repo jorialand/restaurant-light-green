@@ -1,0 +1,307 @@
+{
+  "grill": [
+    {
+      "id": 12, "img": "12tbone.png",
+      "en": { "name": "T-Bone Steak", "desc": "Premium bone-in steak, expertly seared over an open flame to lock in the juices.", "price": "34.50 €" },
+      "es": { "name": "T-Bone Steak", "desc": "Corte premium que combina solomillo y lomo bajo en una sola pieza. Asado al fuego para mayor sabor y jugosidad.", "price": "34,50 €" }
+    },
+    {
+      "id": 13, "img": "13argentinian.png",
+      "en": { "name": "Argentinean Steak", "desc": "Premium steak grilled over an open flame. Served with traditional Russian salad and homemade chimichurri sauce.", "price": "22.00 €" },
+      "es": { "name": "Argentinean Steak", "desc": "Corte de ternera premium asado a la brasa. Acompañado de ensaladilla rusa y nuestra salsa chimichurri.", "price": "22,00 €" }
+    },
+    {
+      "id": 14, "img": "14tagliata.png",
+      "en": { "name": "Beef Tagliata", "desc": "Sliced and served on a bed of fresh rocket, topped with Grana Padano, cherry tomatoes and a balsamic glaze.", "price": "19.50 €" },
+      "es": { "name": "Beef Tagliata", "desc": "Tagliata de ternera, cortada en láminas y servida sobre una cama de rúcula fresca con Grana Padano, tomates cherry y un toque de balsámico.", "price": "19,50 €" }
+    },
+    {
+      "id": 15, "img": "15tenderloin.png",
+      "en": { "name": "Tenderloin Steak", "desc": "Grilled sirloin steak.", "price": "22.00 €" },
+      "es": { "name": "Tenderloin Steak", "desc": "Solomillo de ternera a la parrilla.", "price": "22,00 €" }
+    },
+    {
+      "id": 16, "img": "16chops.png",
+      "en": { "name": "Lamb Chops", "desc": "Grilled lamb chops, served with chips.", "price": "18.00 €" },
+      "es": { "name": "Lamb Chops", "desc": "Cordero a la parrilla, servido con patatas fritas.", "price": "18,00 €" }
+    },
+    {
+      "id": 17, "img": "17wagyu.png",
+      "en": { "name": "Wagyu Steak", "desc": "Served with butter, Grana Padano and roasted potatoes, with chimichurri on the side.", "price": "34.90 €" },
+      "es": { "name": "Wagyu Steak", "desc": "Tagliata de Wagyu servida con mantequilla, Grana Padano y patatas al horno, acompañada de chimichurri.", "price": "34,90 €" }
+    },
+    {
+      "id": 18, "img": "18picanha.png",
+      "en": { "name": "Brazilian Picanha", "desc": "Brazilian picanha on the sword with cabbage salad and chimichurri.", "price": "24.00 €" },
+      "es": { "name": "Brazilian Picanha", "desc": "Picanha brasileña a la espada con ensalada de col y chimichurri.", "price": "24,00 €" }
+    },
+    {
+      "id": 19, "img": "19tomahawk.png",
+      "en": { "name": "Tomahawk Steak", "desc": "A massive, long-bone ribeye grilled. Served with golden roasted potatoes and aromatic rosemary.", "price": "29.50 €" },
+      "es": { "name": "Tomahawk Steak", "desc": "Chuletón de ternera con hueso largo, acompañado de patatas doradas y romero fresco.", "price": "29,50 €" }
+    },
+    {
+      "id": 20, "img": "20porchetta.png",
+      "en": { "name": "Porchetta", "desc": "Traditional herb-rolled pork roast with crispy crackling skin. Served with homemade Russian salad.", "price": "14.00 €" },
+      "es": { "name": "Porchetta", "desc": "Asado tradicional de cerdo marinado con hierbas aromáticas y piel crujiente, acompañado de ensaladilla rusa casera.", "price": "14,00 €" }
+    },
+    {
+      "id": 21, "img": "21veggies.png",
+      "en": { "name": "Grilled Vegetables", "desc": "Grilled vegetables with aged cheese, pistachio and olive oil.", "price": "12.50 €" },
+      "es": { "name": "Verduras a la parrilla", "desc": "Verduras a la parrilla con queso curado, pistacho y aceite de oliva.", "price": "12,50 €" }
+    },
+    {
+      "id": 22, "img": "22chepuga.png",
+      "en": { "name": "Chicken Breast", "desc": "Grilled chicken breast with french fries.", "price": "11.00 €" },
+      "es": { "name": "Pechuga de pollo", "desc": "Pechuga de pollo a la parrilla con papas fritas.", "price": "11,00 €" }
+    }
+  ],
+  "menu": {
+    "tapas": [
+      {
+        "id": 1, "img": "1-morta.png",
+        "en": { "name": "Mortadela Pistacchio", "desc": "Italian mortadela with pistachio.", "price": "6.50 €" },
+        "es": { "name": "Mortadela Pistacchio", "desc": "Mortadela italiana con pistachos.", "price": "6,50 €" }
+      },
+      {
+        "id": 2, "img": "2-ham.png",
+        "en": { "name": "Ham and Lard", "desc": "Bread with lard and ham on top.", "price": "6.50 €" },
+        "es": { "name": "Ham and Lard", "desc": "Pan con manteca y jamón.", "price": "6,50 €" }
+      },
+      {
+        "id": 3, "img": "3chicha.png",
+        "en": { "name": "Pork 'Chicharrones'", "desc": "Fried pork belly chunks served with fresh guacamole.", "price": "7.00 €" },
+        "es": { "name": "Pork 'Chicharrones'", "desc": "Dados de panceta de cerdo extra crujientes acompañados de guacamole artesanal.", "price": "7,00 €" }
+      },
+      {
+        "id": 4, "img": "4iberian.png",
+        "en": { "name": "Iberian Ham & Cheese", "desc": "Traditional Spanish ham and cheese selection.", "price": "12.00 €" },
+        "es": { "name": "Iberian Ham & Cheese", "desc": "Selección de embutidos y quesos.", "price": "12,00 €" }
+      },
+      {
+        "id": 5, "img": "5costolette.png",
+        "en": { "name": "Costolette Sugo Penne", "desc": "Pasta with tomato sauce and grilled ribs, finished with grated cheese.", "price": "14.00 €" },
+        "es": { "name": "Costolette Sugo Penne", "desc": "Pasta con salsa de tomate y costillas a la parrilla, con un toque de queso rallado.", "price": "14,00 €" }
+      }
+    ],
+    "starters": [
+      {
+        "id": 6, "img": "6octopussy.png",
+        "en": { "name": "Grilled Octopus", "desc": "Grilled octopus tentacles, juicy and flavourful.", "price": "14.00 €" },
+        "es": { "name": "Pulpo a la parrilla", "desc": "Tentáculos de pulpo a la parrilla, jugoso y sabroso.", "price": "14,00 €" }
+      },
+      {
+        "id": 7, "img": "7mich.png",
+        "en": { "name": "Mich with Mustard", "desc": "Traditional 3-meat skinless grilled sausages. Served with mustard.", "price": "9.00 €" },
+        "es": { "name": "Mich with Mustard", "desc": "Rollitos de 3 carnes seleccionadas. Servidos con mostaza.", "price": "9,00 €" }
+      },
+      {
+        "id": 8, "img": "8wingies.png",
+        "en": { "name": "Chicken Wings", "desc": "Juicy chicken wings with sauce and mashed potatoes.", "price": "6.50 €" },
+        "es": { "name": "Alitas de pollo", "desc": "Alitas de pollo jugosas con salsa y puré de patatas.", "price": "6,50 €" }
+      },
+      {
+        "id": 9, "img": "9oxtail.png",
+        "en": { "name": "Braised Oxtail", "desc": "Slow-cooked until tender and juicy, served over a bed of creamy mashed potatoes.", "price": "16.50 €" },
+        "es": { "name": "Rabo de toro estofado", "desc": "Rabo de vacuno cocinado en vino y a fuego lento. Servido sobre un cremoso puré de patata artesanal.", "price": "16,50 €" }
+      }
+    ],
+    "rice_pasta": [
+      {
+        "id": 10, "img": "10pesto.png",
+        "en": { "name": "Pasta Pesto", "desc": "Spaghetti with aromatic basil, parmesan, and nuts.", "price": "12.00 €" },
+        "es": { "name": "Pasta Pesto", "desc": "Spaghetti con salsa de albahaca, piñones y parmesano.", "price": "12,00 €" }
+      },
+      {
+        "id": 11, "img": "11grilled.png",
+        "en": { "name": "Grilled Chicken", "desc": "Roasted chicken legs accompanied by aromatic basmati rice and a touch of fresh herbs.", "price": "8.50 €" },
+        "es": { "name": "Pollo a la parrilla", "desc": "Muslos de pollo asados, acompañados de arroz basmati aromático y un toque de finas hierbas.", "price": "8,50 €" }
+      }
+    ],
+    "fish_seafood": [
+      {
+        "id": 23, "img": "23chicharros.png",
+        "en": { "name": "Fresh Whitebait", "desc": "Golden-fried small anchovies served with fresh lemon wedges and garlic mayonnaise.", "price": "9.50 €" },
+        "es": { "name": "Chicharros frescos", "desc": "Pescadito frito servido con limón y alioli.", "price": "9,50 €" }
+      },
+      {
+        "id": 24, "img": "24seafood.png",
+        "en": { "name": "Grilled Seafood", "desc": "Grilled king prawns, tender octopus tentacles, and calamari rings with aromatic herbs and a touch of salt.", "price": "18.00 €" },
+        "es": { "name": "Marisco a la plancha", "desc": "Gambones, tentáculos de pulpo y anillas de calamar a la plancha con hierbas aromáticas y un toque de sal.", "price": "18,00 €" }
+      },
+      {
+        "id": 25, "img": "25salad.png",
+        "en": { "name": "Seafood Salad", "desc": "Fresh seafood salad.", "price": "16.00 €" },
+        "es": { "name": "Ensalada de marisco", "desc": "Ensalada de marisco fresca.", "price": "16,00 €" }
+      }
+    ],
+    "salad": [
+      {
+        "id": 26, "img": "26spring.png",
+        "en": { "name": "Spring Salad", "desc": "Mix of greens, cherry tomatoes, cucumber, and red onion, tossed avocado and feta cheese.", "price": "6.00 €" },
+        "es": { "name": "Ensalada de primavera", "desc": "Mezcla de brotes tiernos, tomates cherry, pepino y cebolla roja, con aguacate y queso feta.", "price": "6,00 €" }
+      },
+      {
+        "id": 27, "img": "27tuna.png",
+        "en": { "name": "Tuna Salad", "desc": "A mix of premium tuna, golden sweet corn, black olives, and fresh garden vegetables.", "price": "9.50 €" },
+        "es": { "name": "Ensalada de atún", "desc": "Una mezcla de atún premium, maíz dulce, aceitunas negras y vegetales de la huerta.", "price": "9,50 €" }
+      },
+      {
+        "id": 28, "img": "28protein.png",
+        "en": { "name": "Protein Salad", "desc": "Fresh baby spinach leaves with avocado, crunchy walnuts, and sweet corn, topped with aged cheese.", "price": "9.50 €" },
+        "es": { "name": "Ensalada proteica", "desc": "Hojas tiernas de espinaca fresca acompañadas de aguacate, nueces crujientes, maíz dulce y queso madurado.", "price": "9,50 €" }
+      }
+    ],
+    "kids_menu": [
+      {
+        "id": 29, "img": "29kids.png",
+        "en": { "name": "Kids Burger", "desc": "Mini burger with french fries.", "price": "9.50 €" },
+        "es": { "name": "Hamburguesa infantil", "desc": "Mini hamburguesa con patatas fritas.", "price": "9,50 €" }
+      },
+      {
+        "id": 30, "img": "30nugets.png",
+        "en": { "name": "Nuggets", "desc": "Chicken nuggets with french fries.", "price": "8.50 €" },
+        "es": { "name": "Nuggets", "desc": "Nuggets de pollo con papas fritas.", "price": "8,50 €" }
+      },
+      {
+        "id": 31, "img": "31pizza.png",
+        "en": { "name": "Pizza", "desc": "Small Pizza Margherita.", "price": "7.00 €" },
+        "es": { "name": "Pizza", "desc": "Pizza margarita pequeña.", "price": "7,00 €" }
+      }
+    ],
+    "desserts_breakfast": [
+      {
+        "id": 32, "img": "32eggs.png",
+        "en": { "name": "Eggs & Toast", "desc": "Poached eggs and crispy bacon on thick-cut toasted bread. Accompanied by fresh orange juice and coffee.", "price": "9.00 €" },
+        "es": { "name": "Eggs & Toast", "desc": "Huevos en su punto y bacon crujiente sobre una rebanada de pan tostado. Acompañado de zumo de naranja natural y café.", "price": "9,00 €" }
+      },
+      {
+        "id": 33, "img": "33spanish.png",
+        "en": { "name": "Spanish Tortilla", "desc": "Spanish omelet with fresh seasonal vegetables.", "price": "9.50 €" },
+        "es": { "name": "Spanish Tortilla", "desc": "Tortilla española con verduras frescas de temporada.", "price": "9,50 €" }
+      },
+      {
+        "id": 34, "img": "34spinat.png",
+        "en": { "name": "Eggs & Spinach", "desc": "Eggs served over a sautéed baby spinach. Topped with parmesan cheese.", "price": "12.00 €" },
+        "es": { "name": "Eggs & Spinach", "desc": "Huevos a la plancha sobre una base de espinacas frescas salteadas con lascas de queso parmesano.", "price": "12,00 €" }
+      },
+      {
+        "id": 35, "img": "35polenta.png",
+        "en": { "name": "Eggs & Polenta", "desc": "Polenta topped with two eggs, aged cheese shavings, and crushed pistachios.", "price": "12.00 €" },
+        "es": { "name": "Eggs & Polenta", "desc": "Polenta acompañada de huevos, lascas de queso curado y pistachos.", "price": "12,00 €" }
+      },
+      {
+        "id": 36, "img": "36pancake.png",
+        "en": { "name": "Pancake", "desc": "Topped with a scoop of vanilla ice cream, fresh strawberries, blueberries and syrup.", "price": "5.90 €" },
+        "es": { "name": "Pancake", "desc": "Tortita artesanal servida con una bola de helado de vainilla, fresas y arándanos frescos y sirope.", "price": "5,90 €" }
+      },
+      {
+        "id": 37, "img": "37churros.png",
+        "en": { "name": "Churros", "desc": "Served with chocolate and pistachio.", "price": "6.00 €" },
+        "es": { "name": "Churros", "desc": "Servidos con chocolate y pistachos.", "price": "6,00 €" }
+      },
+      {
+        "id": 38, "img": "38ice.png",
+        "en": { "name": "Ice Cream Chocolate", "desc": "Creamy ice cream served with a selection of fresh seasonal fruit.", "price": "6.80 €" },
+        "es": { "name": "Helado de chocolate", "desc": "Helado cremoso acompañado de una selección de frutas frescas de temporada.", "price": "6,80 €" }
+      }
+    ]
+  },
+  "drinks": {
+    "wines": [
+      {
+        "name": "Tempranillo",
+        "desc_en": "Classic Spanish red. Medium-bodied, red fruits (cherry, plum), light oak touch. Easy drinking, great for all occasions.",
+        "desc_es": "Tinto español clásico. Cuerpo medio, frutas rojas (cereza, ciruela), toque ligero de roble. Fácil de beber, para toda ocasión.",
+        "price_glass": "4.00 €", "price_bottle": "11.50 €"
+      },
+      {
+        "name": "Marqués de Cáceres",
+        "desc_en": "Iconic Rioja. Elegant and balanced, red berries, vanilla from oak aging.",
+        "desc_es": "Icónico Rioja. Elegante y equilibrado, frutos rojos y vainilla de la crianza en roble.",
+        "price_glass": "8.50 €", "price_bottle": "27.50 €"
+      },
+      {
+        "name": "Bar Argentino - Malbec",
+        "desc_en": "Argentine Malbec. Full-bodied, dark fruits (blackberry, blackcurrant), velvety tannins. Bold and smooth.",
+        "desc_es": "Malbec argentino. Cuerpo pleno, frutas oscuras (mora, grosella negra), taninos aterciopelados. Potente y suave.",
+        "price_glass": "6.00 €", "price_bottle": "22.50 €"
+      },
+      {
+        "name": "Protos",
+        "desc_en": "Ribera del Duero heavyweight. Rich, complex, aged longer in oak. Dark fruit, leather, earthy notes.",
+        "desc_es": "Ribera del Duero de altura. Rico y complejo, crianza larga en roble. Fruta oscura, cuero y notas terrosas.",
+        "price_glass": "8.50 €", "price_bottle": "28.00 €"
+      },
+      {
+        "name": "Hito - Ribera Duero",
+        "desc_en": "Premium Spanish red from one of Spain's finest regions. Intense, structured, aged in oak. Notes of dark cherry, tobacco and spice.",
+        "desc_es": "Tinto premium de una de las mejores regiones de España. Intenso, estructurado, criado en roble. Notas de cereza oscura, tabaco y especias.",
+        "price_glass": "7.50 €", "price_bottle": "28.00 €"
+      },
+      {
+        "name": "Sommelier's Selection",
+        "name_es": "Selección del sumiller",
+        "desc_en": "Sommelier's rotating pick — ask the waiter for today's choice. Typically a hidden gem or seasonal highlight.",
+        "desc_es": "Selección rotatoria del sumiller — pregunta al camarero la elección del día. Habitualmente una joya oculta o destacado de temporada.",
+        "price_glass": "7.00 €", "price_bottle": "25.00 €"
+      },
+      {
+        "name": "Wine from the North",
+        "name_es": "Vino del norte",
+        "desc_en": "Fresh, lighter style wine from the Basque country, mineral notes, good acidity.",
+        "desc_es": "Vino fresco y ligero del País Vasco, notas minerales y buena acidez.",
+        "price_glass": "7.00 €", "price_bottle": "25.00 €"
+      }
+    ],
+    "cocktails": [
+      { "name": "Mojito", "ingredients_en": "Rum, mint, lime, sugar, soda", "ingredients_es": "Ron, menta, lima, azúcar, soda", "price": "7.00 €" },
+      { "name": "Tequila Sunrise", "ingredients_en": "Tequila, orange, grenadine", "ingredients_es": "Tequila, naranja, granadina", "price": "7.00 €" },
+      { "name": "Piña Colada", "ingredients_en": "Rum, coconut, pineapple", "ingredients_es": "Ron, coco, piña", "price": "7.00 €" },
+      { "name": "Vodka Lemon / Orange", "ingredients_en": "Vodka, lemon or orange", "ingredients_es": "Vodka, limón o naranja", "price": "7.00 €" },
+      { "name": "Aperol Spritz", "ingredients_en": "Aperol, Prosecco, Soda", "ingredients_es": "Aperol, Prosecco, Soda", "price": "7.00 €" },
+      { "name": "Light Green Aloe Vodka", "ingredients_en": "Vodka, aloe, lime, soda", "ingredients_es": "Vodka, aloe, lima, soda", "price": "7.00 €" },
+      { "name": "Strawberry Daiquiri", "ingredients_en": "Rum, strawberry, lime", "ingredients_es": "Ron, fresa, lima", "price": "7.00 €" },
+      { "name": "Cuba Libre", "ingredients_en": "Rum, cola, lime", "ingredients_es": "Ron, cola, lima", "price": "7.00 €" },
+      { "name": "Margarita", "ingredients_en": "Tequila, triple sec, lime", "ingredients_es": "Tequila, triple sec, lima", "price": "7.00 €" },
+      { "name": "Gin Tonic", "ingredients_en": "Premium gin, tonic water", "ingredients_es": "Ginebra premium, agua tónica", "price": "7.00 €" },
+      { "name": "Sex on the Beach", "ingredients_en": "Vodka, apricot, orange", "ingredients_es": "Vodka, albaricoque, naranja", "price": "7.00 €" },
+      { "name": "Whiskey Cola", "ingredients_en": "Whiskey, cola", "ingredients_es": "Whiskey, cola", "price": "7.00 €" }
+    ],
+    "on_the_rocks": [
+      { "name": "Jack Daniel's", "price": "4.00 €" },
+      { "name": "Johnnie Walker Black Label", "price": "5.00 €" },
+      { "name": "Johnnie Walker Red Label", "price": "3.50 €" },
+      { "name": "Vodka", "price": "3.50 €" },
+      { "name_en": "Liqueur", "name_es": "Licor", "price": "3.00 €" },
+      { "name": "Rum", "price": "4.00 €" }
+    ],
+    "beer": [
+      { "name_en": "Large Draft Beer", "name_es": "Caña Grande", "price": "3.00 €" },
+      { "name_en": "Small Draft Beer", "name_es": "Caña Pequeña", "price": "1.50 €" },
+      { "name_en": "Shandy", "name_es": "Shandy", "price": "3.00 €" },
+      { "name_en": "Alcohol-Free Beer", "name_es": "Cerveza Sin Alcohol", "price": "3.00 €" },
+      { "name_en": "Heineken", "name_es": "Heineken", "price": "3.00 €" }
+    ],
+    "soft_drinks": [
+      { "name_en": "Still Water", "name_es": "Agua sin gas", "price": "2.50 €" },
+      { "name_en": "Sparkling Water", "name_es": "Agua con gas", "price": "2.50 €" },
+      { "name_en": "Coca Cola Zero", "name_es": "Coca Cola Zero", "price": "2.80 €" },
+      { "name_en": "Coca Cola", "name_es": "Coca Cola", "price": "2.80 €" },
+      { "name_en": "Fanta", "name_es": "Fanta", "price": "2.80 €" },
+      { "name_en": "Sprite", "name_es": "Sprite", "price": "2.80 €" }
+    ],
+    "juices": [
+      { "name_en": "Apricot Juice", "name_es": "Zumo de Albaricoque", "price": "3.00 €" },
+      { "name_en": "Orange Juice", "name_es": "Zumo de Naranja", "price": "3.00 €" },
+      { "name_en": "Pineapple Juice", "name_es": "Zumo de Piña", "price": "3.00 €" }
+    ],
+    "coffee": [
+      { "name_en": "Latte", "name_es": "Latte", "price": "1.50 €" },
+      { "name_en": "Espresso", "name_es": "Espresso", "price": "1.50 €" },
+      { "name_en": "Cappuccino", "name_es": "Cappuccino", "price": "2.00 €" },
+      { "name_en": "Macchiato", "name_es": "Macchiato", "price": "1.50 €" },
+      { "name_en": "Latte Macchiato", "name_es": "Latte Macchiato", "price": "2.00 €" }
+    ]
+  }
+}

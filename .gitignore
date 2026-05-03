@@ -84,3 +84,8 @@ android-sdk/-e
 *.env
 *.env.*
 .vercel
+Design-assets/
+scratch/
+Directives/
+Miscellaneous/
+*.pdf
