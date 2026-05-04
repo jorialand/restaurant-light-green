@@ -8,7 +8,7 @@
     {
       "id": 13, "img": "13argentinian.png",
       "en": { "name": "Argentinean Steak", "desc": "Premium steak grilled over an open flame. Served with traditional Russian salad and homemade chimichurri sauce.", "price": "22.00 €" },
-      "es": { "name": "Argentinean Steak", "desc": "Corte de ternera premium asado a la brasa. Acompañado de ensaladilla rusa y nuestra salsa chimichurri.", "price": "22,00 €" }
+      "es": { "name": "Filete argentino", "desc": "Corte de ternera premium asado a la brasa. Acompañado de ensaladilla rusa y nuestra salsa chimichurri.", "price": "22,00 €" }
     },
     {
       "id": 14, "img": "14tagliata.png",
@@ -18,27 +18,27 @@
     {
       "id": 15, "img": "15tenderloin.png",
       "en": { "name": "Tenderloin Steak", "desc": "Grilled sirloin steak.", "price": "22.00 €" },
-      "es": { "name": "Tenderloin Steak", "desc": "Solomillo de ternera a la parrilla.", "price": "22,00 €" }
+      "es": { "name": "Solomillo", "desc": "Solomillo de ternera a la parrilla.", "price": "22,00 €" }
     },
     {
       "id": 16, "img": "16chops.png",
       "en": { "name": "Lamb Chops", "desc": "Grilled lamb chops, served with chips.", "price": "18.00 €" },
-      "es": { "name": "Lamb Chops", "desc": "Cordero a la parrilla, servido con patatas fritas.", "price": "18,00 €" }
+      "es": { "name": "Chuletas de cordero", "desc": "Cordero a la parrilla, servido con patatas fritas.", "price": "18,00 €" }
     },
     {
       "id": 17, "img": "17wagyu.png",
       "en": { "name": "Wagyu Steak", "desc": "Served with butter, Grana Padano and roasted potatoes, with chimichurri on the side.", "price": "34.90 €" },
-      "es": { "name": "Wagyu Steak", "desc": "Tagliata de Wagyu servida con mantequilla, Grana Padano y patatas al horno, acompañada de chimichurri.", "price": "34,90 €" }
+      "es": { "name": "Wagyu", "desc": "Tagliata de Wagyu servida con mantequilla, Grana Padano y patatas al horno, acompañada de chimichurri.", "price": "34,90 €" }
     },
     {
       "id": 18, "img": "18picanha.png",
       "en": { "name": "Brazilian Picanha", "desc": "Brazilian picanha on the sword with cabbage salad and chimichurri.", "price": "24.00 €" },
-      "es": { "name": "Brazilian Picanha", "desc": "Picanha brasileña a la espada con ensalada de col y chimichurri.", "price": "24,00 €" }
+      "es": { "name": "Picanha brasileña", "desc": "Picanha brasileña a la espada con ensalada de col y chimichurri.", "price": "24,00 €" }
     },
     {
       "id": 19, "img": "19tomahawk.png",
       "en": { "name": "Tomahawk Steak", "desc": "A massive, long-bone ribeye grilled. Served with golden roasted potatoes and aromatic rosemary.", "price": "29.50 €" },
-      "es": { "name": "Tomahawk Steak", "desc": "Chuletón de ternera con hueso largo, acompañado de patatas doradas y romero fresco.", "price": "29,50 €" }
+      "es": { "name": "Chuletón Tomahawk", "desc": "Chuletón de ternera con hueso largo, acompañado de patatas doradas y romero fresco.", "price": "29,50 €" }
     },
     {
       "id": 20, "img": "20porchetta.png",
@@ -66,17 +66,17 @@
       {
         "id": 2, "img": "2-ham.png",
         "en": { "name": "Ham and Lard", "desc": "Bread with lard and ham on top.", "price": "6.50 €" },
-        "es": { "name": "Ham and Lard", "desc": "Pan con manteca y jamón.", "price": "6,50 €" }
+        "es": { "name": "Jamón y Manteca", "desc": "Pan con manteca y jamón.", "price": "6,50 €" }
       },
       {
         "id": 3, "img": "3chicha.png",
         "en": { "name": "Pork 'Chicharrones'", "desc": "Fried pork belly chunks served with fresh guacamole.", "price": "7.00 €" },
-        "es": { "name": "Pork 'Chicharrones'", "desc": "Dados de panceta de cerdo extra crujientes acompañados de guacamole artesanal.", "price": "7,00 €" }
+        "es": { "name": "Chicharrones de cerdo", "desc": "Dados de panceta de cerdo extra crujientes acompañados de guacamole artesanal.", "price": "7,00 €" }
       },
       {
         "id": 4, "img": "4iberian.png",
         "en": { "name": "Iberian Ham & Cheese", "desc": "Traditional Spanish ham and cheese selection.", "price": "12.00 €" },
-        "es": { "name": "Iberian Ham & Cheese", "desc": "Selección de embutidos y quesos.", "price": "12,00 €" }
+        "es": { "name": "Jamón Ibérico y Queso", "desc": "Selección de embutidos y quesos.", "price": "12,00 €" }
       },
       {
         "id": 5, "img": "5costolette.png",
@@ -93,7 +93,7 @@
       {
         "id": 7, "img": "7mich.png",
         "en": { "name": "Mich with Mustard", "desc": "Traditional 3-meat skinless grilled sausages. Served with mustard.", "price": "9.00 €" },
-        "es": { "name": "Mich with Mustard", "desc": "Rollitos de 3 carnes seleccionadas. Servidos con mostaza.", "price": "9,00 €" }
+        "es": { "name": "Mich con Mostaza", "desc": "Rollitos de 3 carnes seleccionadas. Servidos con mostaza.", "price": "9,00 €" }
       },
       {
         "id": 8, "img": "8wingies.png",
@@ -173,27 +173,27 @@
       {
         "id": 32, "img": "32eggs.png",
         "en": { "name": "Eggs & Toast", "desc": "Poached eggs and crispy bacon on thick-cut toasted bread. Accompanied by fresh orange juice and coffee.", "price": "9.00 €" },
-        "es": { "name": "Eggs & Toast", "desc": "Huevos en su punto y bacon crujiente sobre una rebanada de pan tostado. Acompañado de zumo de naranja natural y café.", "price": "9,00 €" }
+        "es": { "name": "Huevos y Tostadas", "desc": "Huevos en su punto y bacon crujiente sobre una rebanada de pan tostado. Acompañado de zumo de naranja natural y café.", "price": "9,00 €" }
       },
       {
         "id": 33, "img": "33spanish.png",
         "en": { "name": "Spanish Tortilla", "desc": "Spanish omelet with fresh seasonal vegetables.", "price": "9.50 €" },
-        "es": { "name": "Spanish Tortilla", "desc": "Tortilla española con verduras frescas de temporada.", "price": "9,50 €" }
+        "es": { "name": "Tortilla española", "desc": "Tortilla española con verduras frescas de temporada.", "price": "9,50 €" }
       },
       {
         "id": 34, "img": "34spinat.png",
         "en": { "name": "Eggs & Spinach", "desc": "Eggs served over a sautéed baby spinach. Topped with parmesan cheese.", "price": "12.00 €" },
-        "es": { "name": "Eggs & Spinach", "desc": "Huevos a la plancha sobre una base de espinacas frescas salteadas con lascas de queso parmesano.", "price": "12,00 €" }
+        "es": { "name": "Huevos con Espinacas", "desc": "Huevos a la plancha sobre una base de espinacas frescas salteadas con lascas de queso parmesano.", "price": "12,00 €" }
       },
       {
         "id": 35, "img": "35polenta.png",
         "en": { "name": "Eggs & Polenta", "desc": "Polenta topped with two eggs, aged cheese shavings, and crushed pistachios.", "price": "12.00 €" },
-        "es": { "name": "Eggs & Polenta", "desc": "Polenta acompañada de huevos, lascas de queso curado y pistachos.", "price": "12,00 €" }
+        "es": { "name": "Huevos con Polenta", "desc": "Polenta acompañada de huevos, lascas de queso curado y pistachos.", "price": "12,00 €" }
       },
       {
         "id": 36, "img": "36pancake.png",
         "en": { "name": "Pancake", "desc": "Topped with a scoop of vanilla ice cream, fresh strawberries, blueberries and syrup.", "price": "5.90 €" },
-        "es": { "name": "Pancake", "desc": "Tortita artesanal servida con una bola de helado de vainilla, fresas y arándanos frescos y sirope.", "price": "5,90 €" }
+        "es": { "name": "Tortita", "desc": "Tortita artesanal servida con una bola de helado de vainilla, fresas y arándanos frescos y sirope.", "price": "5,90 €" }
       },
       {
         "id": 37, "img": "37churros.png",
